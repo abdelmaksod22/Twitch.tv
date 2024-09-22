@@ -1,4 +1,5 @@
 import User from "../../models/User.js";
+import Channel from "../../models/Channel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -10,10 +11,14 @@ export const postRegister = async (req, res) => {
       return res.status(409).send("Email is already exist");
     }
     const encryptPassword = await bcrypt.hash(password, 10);
+
+    const newChannel = await Channel.create({});
+
     const user = await User.create({
       username,
       email: email.toLowerCase(),
       password: encryptPassword,
+      channel: newChannel._id,
     });
     const token = jwt.sign(
       {
