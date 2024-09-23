@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 
 import authRoutes from "./src/routes/authRoutes.js";
+import channelsRoutes from "./src/routes/channelsRoutes.js";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/channels", channelsRoutes);
 
 app.get("/", (req, res) => {
   res.send("APP IS RUNNING");
