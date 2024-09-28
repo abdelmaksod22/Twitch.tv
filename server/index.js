@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 
 import authRoutes from "./src/routes/authRoutes.js";
 import channelsRoutes from "./src/routes/channelsRoutes.js";
+import settingsRoutes from "./src/routes/settingsRoutes.js";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/channels", channelsRoutes);
+app.use("/api/settings", settingsRoutes);
 
 app.get("/", (req, res) => {
   res.send("APP IS RUNNING");
