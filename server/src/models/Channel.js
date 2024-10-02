@@ -12,10 +12,6 @@ const channelSchema = new Schema({
   description: { type: String, default: defaulDescription },
   avatarUrl: { type: String, default: "none" },
   streamKey: { type: String, default: uuid },
-  messages: {
-    type: [{ type: Schema.Types.ObjectId, ref: "Message" }],
-    default: [],
-  },
 });
 
 export default mongoose.model("Channel", channelSchema);
